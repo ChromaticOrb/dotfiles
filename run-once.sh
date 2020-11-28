@@ -3,23 +3,25 @@
 ####
 # Install pre-requisites
 
+PREREQ="git zsh tmux"
+
 DIST=$(grep '^ID=' /etc/os-release | cut -d'=' -f2)
+echo "Looks like we're running \"${DIST}\""
 case ${DIST} in
-  ubuntu) 
-    echo "Ubuntu"
+  'ubuntu'|'raspbian') 
     PKGMNGR="sudo apt install"
     ;;
-  fedora)
-    echo "Fedora"
+  fedora )
     PKGMNGR="sudo dnf install"
     ;;
-  *) 
+  * ) 
     echo "Don't know how to handle ${DIST}"
     exit
     ;;
 esac
 
-${PKGMNGR} git zsh tmux
+echo "Requesting to run: \"${PKGMNGR} ${PREREQ}\""
+${PKGMNGR} ${PREREQ}
 
 # ohmyzsh (https://ohmyz.sh/#install)
 if [ -d ~/.oh-my-zsh ]
