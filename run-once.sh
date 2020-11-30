@@ -4,7 +4,7 @@
 # Install pre-requisite packages
 
 # List of packeages to install
-PREREQ="git zsh tmux"
+PREREQ="zsh tmux"
 
 # Guess the package manager to use from the distribution ID
 DIST=$(grep '^ID=' /etc/os-release | cut -d'=' -f2)
@@ -35,7 +35,7 @@ then
   echo "oh-my-zsh already present."
 else
   echo "Installing Oh-My-zsh"
-  sudo sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+  sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 fi
 
 # Tmux Plugin Manager (tpm)
